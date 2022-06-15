@@ -1,6 +1,9 @@
 name: 'Run tests in Currents dev'
 description: 'TBA'
 inputs:
+  github_token:
+    description: 'Github token'
+    required: false
   username:
     description: "Username for test run"
     required: true
@@ -39,6 +42,9 @@ runs:
   steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        repository: 'Bowery-RES/webapp-ui-automation'
+        token: ${{ inputs.github_token }}
 
     - name: Cache node modules
       uses: actions/cache@v2
